@@ -38,6 +38,10 @@ export default class Rover {
     });
   }
 
+  public getCurrentDireaction(): string {
+    return this.direction;
+  }
+
   protected moveNorth(): void {
     this.coordY += 1;
   }
