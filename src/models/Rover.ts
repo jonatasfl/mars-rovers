@@ -1,20 +1,18 @@
-import { oneOf } from "validators";
+import { oneOf, min } from "validators";
 
 type Direction = 'N' | 'S' | 'E' | 'W';
 
 export default class Rover {
+  @min(0)
   private coordX: number;
 
+  @min(0)
   private coordY: number;
 
   @oneOf(['N', 'S', 'E', 'W'])
   private direction: Direction;
 
   constructor(coordX: number, coordY: number, direction: Direction) {
-    if (coordX < 0 || coordY < 0) {
-      throw new Error('Invalid coordinates');
-    }
-
     this.coordX = coordX;
     this.coordY = coordY;
     this.direction = direction;

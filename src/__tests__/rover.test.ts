@@ -5,7 +5,7 @@ describe('Tests for the Rover model', () => {
     expect(new Rover(1, 1, 'N')).toBeDefined();
   });
 
-  it('should throw error with invalid parameters', () => {
+  it('should throw error if X or Y coordinate is invalid', () => {
     expect(() => new Rover(-1, 1, 'S')).toThrow();
   });
 })
