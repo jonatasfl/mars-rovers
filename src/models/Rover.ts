@@ -1,3 +1,5 @@
+import { anyOf } from "validators";
+
 type Direction = 'N' | 'S' | 'E' | 'W';
 
 export default class Rover {
@@ -5,6 +7,7 @@ export default class Rover {
 
   private coordY: number;
 
+  @anyOf(['N', 'S', 'E', 'W'])
   private direction: Direction;
 
   constructor(coordX: number, coordY: number, direction: Direction) {
@@ -38,7 +41,7 @@ export default class Rover {
     });
   }
 
-  public getCurrentDireaction(): string {
+  public getCurrentDirection(): string {
     return this.direction;
   }
 
