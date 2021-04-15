@@ -1,5 +1,5 @@
-import anyOf from './any-of';
+import oneOf from './any-of';
 
 export {
-  anyOf
+  oneOf
 }

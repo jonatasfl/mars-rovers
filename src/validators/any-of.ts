@@ -1,4 +1,4 @@
-export default function anyOf(values: Array<any>) {
+export default function oneOf(values: Array<any>) {
   return function(target: any, key: string) {
     let dir = target[key];
     

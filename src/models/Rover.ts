@@ -1,4 +1,4 @@
-import { anyOf } from "validators";
+import { oneOf } from "validators";
 
 type Direction = 'N' | 'S' | 'E' | 'W';
 
@@ -7,7 +7,7 @@ export default class Rover {
 
   private coordY: number;
 
-  @anyOf(['N', 'S', 'E', 'W'])
+  @oneOf(['N', 'S', 'E', 'W'])
   private direction: Direction;
 
   constructor(coordX: number, coordY: number, direction: Direction) {
