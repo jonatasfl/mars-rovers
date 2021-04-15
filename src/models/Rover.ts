@@ -1,5 +1,6 @@
 import { oneOf, min } from "validators";
 
+type Command = 'L' | 'R' | 'M';
 type Direction = 'N' | 'S' | 'E' | 'W';
 
 export default class Rover {
@@ -18,7 +19,7 @@ export default class Rover {
     this.direction = direction;
   }
 
-  public move(directions: Direction[]): void {
+  /* public move(directions: ): void {
     directions.forEach((dir) => {
       switch (dir) {
         case 'N':
@@ -37,10 +38,14 @@ export default class Rover {
           break;
       }
     });
+  } */
+
+  public getCurrentPosition(): string {
+    return `${this.coordX} ${this.coordY} ${this.direction}`;
   }
 
-  public getCurrentDirection(): string {
-    return this.direction;
+  protected setDirection(dir: Direction): void {
+    this.direction = dir;
   }
 
   protected moveNorth(): void {

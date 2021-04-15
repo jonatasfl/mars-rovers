@@ -8,4 +8,8 @@ describe('Tests for the Rover model', () => {
   it('should throw error if X or Y coordinate is invalid', () => {
     expect(() => new Rover(-1, 1, 'S')).toThrow();
   });
+
+  it('should be able to move correctly', () => {
+    const rover = new Rover(0, 0, 'N');
+  })
 })
