@@ -16,7 +16,9 @@ describe('Tests for TextFile model', () => {
   it('should be able to get the file contents as array', () => {    
     const path = resolve(__dirname, '..', '..', 'input.txt');
     const file = new TextFile(path);
-    const mockTextFile = jest.spyOn(file, 'getData').mockReturnValue(['5 5', '1 2 N']);
+    const getDataMock = jest.spyOn(file, 'getData');
+    getDataMock.mockReturnValue(['5 5', '1 2 N'])
     expect(file.getData()).toEqual(['5 5', '1 2 N']);
+    expect(getDataMock).toHaveBeenCalled();
   });
 })
