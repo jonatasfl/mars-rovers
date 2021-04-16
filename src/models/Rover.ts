@@ -1,5 +1,4 @@
 import { getNewDirection } from "../helpers/misc";
-import { Direction, DirMap } from "../interfaces/rover";
 import { oneOf, min } from "../validators";
 
 export default class Rover {
@@ -10,9 +9,9 @@ export default class Rover {
   private coordY: number;
 
   @oneOf(['N', 'S', 'E', 'W'])
-  private direction: Direction;
+  private direction: string;
 
-  constructor(coordX: number, coordY: number, direction: Direction) {
+  constructor(coordX: number, coordY: number, direction: string) {
     this.coordX = coordX;
     this.coordY = coordY;
     this.direction = direction;

@@ -1,7 +1,7 @@
-import { Command, Direction, DirMap } from "../interfaces/rover";
+import { Command } from "../interfaces/rover";
 
-export function getNewDirection(currentDir: Direction, cmd: Exclude<Command, 'M'>) {
-  const dirMap: DirMap = {
+export function getNewDirection(currentDir: string, cmd: Exclude<Command, 'M'>) {
+  const dirMap: any = {
     N: {
       L: "W",
       R: "E"
