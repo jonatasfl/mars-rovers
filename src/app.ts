@@ -11,9 +11,9 @@ const [ptTopRightX, ptTopRightY] = plateauTopRight.split(' ');
 const plateau = new Plateau(+ptTopRightX, + ptTopRightY);
 
 const [r1x, r1y, r1dir] = rover1setup.split(' ');
-const rover1 = new Rover(+r1x, +r1y, r1dir);
+const rover1 = new Rover(plateau, +r1x, +r1y, r1dir);
 console.log(rover1.execute(rover1cmd));
 
 const [r2x, r2y, r2dir] = rover2setup.split(' ');
-const rover2 = new Rover(+r2x, +r2y, r2dir);
+const rover2 = new Rover(plateau, +r2x, +r2y, r2dir);
 console.log(rover2.execute(rover2cmd));

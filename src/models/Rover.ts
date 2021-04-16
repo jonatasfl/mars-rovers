@@ -1,5 +1,6 @@
 import { getNewDirection } from "../helpers/misc";
 import { oneOf, min } from "../validators";
+import Plateau from "./Plateau";
 
 export default class Rover {
   @min(0)
@@ -11,7 +12,10 @@ export default class Rover {
   @oneOf(['N', 'S', 'E', 'W'])
   private direction: string;
 
-  constructor(coordX: number, coordY: number, direction: string) {
+  private plateau: Plateau;
+
+  constructor(plateau: Plateau, coordX: number, coordY: number, direction: string) {
+    this.plateau = plateau;
     this.coordX = coordX;
     this.coordY = coordY;
     this.direction = direction;
@@ -40,21 +44,53 @@ export default class Rover {
   protected move(): void {
     switch (this.direction) {
       case 'N':
-        this.coordY += 1;
+        this.moveNorth();
         break;
       case 'S':
-        if (this.coordY >= 1) {
-          this.coordY -= 1;
-        }
+        this.moveSouth();
         break;
       case 'E':
-        this.coordX += 1;
+        this.moveEast();
         break;
       case 'W':
-        if (this.coordX >= 1) {
-          this.coordX -= 1;
-        }
+        this.moveWest();
         break;
     }
+  }
+
+  protected moveNorth(): void {
+    const newCoodY = this.coordY + 1;
+    if (newCoodY > this.plateau.getMaxBounds()['topRightY']) {
+      throw new Error('Plateau bounds exceeded');
+    }
+
+    this.coordY = newCoodY;
+  }
+
+  protected moveSouth(): void {
+    const newCoordY = this.coordY - 1;
+    if (newCoordY < 0) {
+      throw new Error('Plateau bounds exceeded');
+    }
+
+    this.coordY = newCoordY;
+  }
+
+  protected moveEast(): void {
+    const newCoordX = this.coordX + 1;
+    if (newCoordX > this.plateau.getMaxBounds()['topRightX']) {
+      throw new Error('Plateau bounds exceeded');
+    }
+
+    this.coordX = newCoordX;
+  }
+
+  protected moveWest(): void {
+    const newCoordX = this.coordX - 1;
+    if (newCoordX < 0) {
+      throw new Error('Plateau bounds exceeded');
+    }
+
+    this.coordX = newCoordX;
   }
 }
