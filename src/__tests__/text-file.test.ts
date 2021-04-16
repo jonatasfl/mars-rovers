@@ -13,9 +13,10 @@ describe('Tests for TextFile model', () => {
     expect(() => new TextFile(path)).toThrow();
   });
 
-  it('should be able to get the file contents as array', () => {
+  it('should be able to get the file contents as array', () => {    
     const path = resolve(__dirname, '..', '..', 'input.txt');
     const file = new TextFile(path);
-    expect(file.getData()).toEqual(['5 5', 'X X']);
+    const mockTextFile = jest.spyOn(file, 'getData').mockReturnValue(['5 5', '1 2 N']);
+    expect(file.getData()).toEqual(['5 5', '1 2 N']);
   });
 })
