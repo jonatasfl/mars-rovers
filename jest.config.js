@@ -1,15 +1,12 @@
 const { resolve } = require('path');
 
-const root = resolve(__dirname, 'src');
+const root = resolve(__dirname);
 module.exports = {
   rootDir: root,
   displayName: 'root-tests',
-  testMatch: ['<rootDir>/**/*.test.ts'],
+  testMatch: ['<rootDir>/src/**/*.test.ts'],
   testEnvironment: 'node',
   clearMocks: true,
   preset: 'ts-jest',
-  moduleDirectories: ['node_modules', '<rootDir>']
-  /* moduleNameMapper: {
-    "(.*)": "<rootDir>/$1"
-  },  */
+  moduleDirectories: ['node_modules', '<rootDir>/src']
 };
