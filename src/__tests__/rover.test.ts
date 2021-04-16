@@ -9,7 +9,8 @@ describe('Tests for the Rover model', () => {
     expect(() => new Rover(-1, 1, 'S')).toThrow();
   });
 
-  it('should be able to move correctly', () => {
+  it('should be able to get current position', () => {
     const rover = new Rover(0, 0, 'N');
+    expect(rover.getCurrentPosition()).toBe('0 0 N');
   })
 })

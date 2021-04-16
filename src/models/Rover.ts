@@ -1,7 +1,5 @@
+import { Command, Direction, DirMap } from "interfaces/rover";
 import { oneOf, min } from "validators";
-
-type Command = 'L' | 'R' | 'M';
-type Direction = 'N' | 'S' | 'E' | 'W';
 
 export default class Rover {
   @min(0)
@@ -13,58 +11,76 @@ export default class Rover {
   @oneOf(['N', 'S', 'E', 'W'])
   private direction: Direction;
 
+  private dirMap: DirMap = {
+    N: {
+      L: "W",
+      R: "E"
+    },
+    S: {
+      L: "E",
+      R: "W"
+    },
+    E: {
+      L: "N",
+      R: "S"
+    },
+    W: {
+      L: "S",
+      R: "N"
+    }
+  }
+
   constructor(coordX: number, coordY: number, direction: Direction) {
     this.coordX = coordX;
     this.coordY = coordY;
     this.direction = direction;
   }
 
-  /* public move(directions: ): void {
-    directions.forEach((dir) => {
-      switch (dir) {
-        case 'N':
-          this.moveNorth();
-          break;
-        case 'S':
-          this.moveSouth();
-          break;
-        case 'E':
-          this.moveEast();
-          break;
-        case 'W':
-          this.moveWest();
-          break;
-        default:
-          break;
+
+  public execute(commands: Command[]): void {
+    if (!Array.isArray(commands)) {
+      throw new Error('Commands needs to be an array of strings');
+    }
+
+    commands.forEach(cmd => {
+      if (cmd === 'L' || cmd === 'R') {
+        this.direction = this.getNewDirection(cmd);
+      } else if (cmd === 'M') {
+        this.move();
+      } else {
+        throw new Error('Invalid command');
       }
     });
-  } */
+  }
 
   public getCurrentPosition(): string {
     return `${this.coordX} ${this.coordY} ${this.direction}`;
   }
-
-  protected setDirection(dir: Direction): void {
-    this.direction = dir;
+  
+  protected getNewDirection(cmd: Exclude<Command, 'M'>): Direction {
+    return this.dirMap[this.direction][cmd];
   }
 
-  protected moveNorth(): void {
-    this.coordY += 1;
-  }
-
-  protected moveSouth(): void {
-    if (this.coordY >= 1) {
-      this.coordY -= 1;
-    }
-  }
-
-  protected moveEast(): void {
-    this.coordX += 1;
-  }
-
-  protected moveWest(): void {
-    if (this.coordX >= 1) {
-      this.coordX -= 1;
+  protected move(): void {
+    switch (this.direction) {
+      case 'N':
+        this.coordY += 1;
+        break;
+      case 'S':
+        if (this.coordY >= 1) {
+          this.coordY -= 1;
+        }
+        break;
+      case 'E':
+        this.coordX += 1;
+        break;
+      case 'W':
+        if (this.coordX >= 1) {
+          this.coordX -= 1;
+        }
+        break;
+      default:
+        break;
     }
   }
 }
