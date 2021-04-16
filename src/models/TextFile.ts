@@ -6,7 +6,7 @@ export default class TextFile {
   constructor(path: string) {
     try {
       const data = readFileSync(path);
-      this.data = data.toString().split(/\r?\n/).map(item => item.trim());
+      this.data = data.toString().split(/\r?\n/).map(item => item.trim()).filter(item => item);
     } catch (e) {
       throw new e;
     }
