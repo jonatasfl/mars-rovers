@@ -1,4 +1,4 @@
-import { Command } from "../interfaces/rover";
+import { Command } from "../models/Rover";
 
 export function getNewDirection(currentDir: string, cmd: Exclude<Command, 'M'>) {
   const dirMap: any = {

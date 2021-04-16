@@ -2,6 +2,9 @@ import { getNewDirection } from "../helpers/misc";
 import { oneOf, min } from "../validators";
 import Plateau from "./Plateau";
 
+export type Command = 'L' | 'R' | 'M';
+export type Direction = 'N' | 'S' | 'E' | 'W';
+
 export default class Rover {
   @min(0)
   private coordX: number;
