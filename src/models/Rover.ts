@@ -39,10 +39,6 @@ export default class Rover {
       }
     });
 
-    return this.getCurrentPosition();
-  }
-
-  protected getCurrentPosition(): string {
     return `${this.coordX} ${this.coordY} ${this.direction}`;
   }
 
