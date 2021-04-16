@@ -9,8 +9,8 @@ describe('Tests for the Rover model', () => {
     expect(() => new Rover(-1, 1, 'S')).toThrow();
   });
 
-  it('should be able to get current position', () => {
+  it('should return correct position after command execution', () => {
     const rover = new Rover(0, 0, 'N');
-    expect(rover.getCurrentPosition()).toBe('0 0 N');
-  })
+    expect(rover.execute('RM')).toBe('1 0 E');
+  });
 })

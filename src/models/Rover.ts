@@ -1,3 +1,4 @@
+import { getNewDirection } from "helpers/misc";
 import { Command, Direction, DirMap } from "interfaces/rover";
 import { oneOf, min } from "validators";
 
@@ -11,54 +12,30 @@ export default class Rover {
   @oneOf(['N', 'S', 'E', 'W'])
   private direction: Direction;
 
-  private dirMap: DirMap = {
-    N: {
-      L: "W",
-      R: "E"
-    },
-    S: {
-      L: "E",
-      R: "W"
-    },
-    E: {
-      L: "N",
-      R: "S"
-    },
-    W: {
-      L: "S",
-      R: "N"
-    }
-  }
-
   constructor(coordX: number, coordY: number, direction: Direction) {
     this.coordX = coordX;
     this.coordY = coordY;
     this.direction = direction;
   }
 
+  public execute(commands: string): string {
+    const cmdArray = commands.split('');
 
-  public execute(commands: Command[]): void {
-    if (!Array.isArray(commands)) {
-      throw new Error('Commands needs to be an array of strings');
-    }
-
-    commands.forEach(cmd => {
+    cmdArray.forEach(cmd => {
       if (cmd === 'L' || cmd === 'R') {
-        this.direction = this.getNewDirection(cmd);
+        this.direction = getNewDirection(this.direction, cmd);
       } else if (cmd === 'M') {
         this.move();
       } else {
         throw new Error('Invalid command');
       }
     });
+
+    return this.getCurrentPosition();
   }
 
-  public getCurrentPosition(): string {
+  protected getCurrentPosition(): string {
     return `${this.coordX} ${this.coordY} ${this.direction}`;
-  }
-  
-  protected getNewDirection(cmd: Exclude<Command, 'M'>): Direction {
-    return this.dirMap[this.direction][cmd];
   }
 
   protected move(): void {
