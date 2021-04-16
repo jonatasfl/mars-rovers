@@ -92,6 +92,8 @@ I've choose Node.js with Typescript to solve this problem because it's a languag
     # or
     npm run test
 
+    # you can use test:coverage instead of test to show test coverage (e.g: yarn test:coverage)
+
 ## Execute
 
     yarn start
