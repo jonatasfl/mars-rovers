@@ -10,6 +10,7 @@ describe('Tests for the Rover model', () => {
 
   it('should throw error if X or Y coordinate is invalid', () => {
     expect(() => new Rover(plateau, -1, 1, 'S')).toThrow();
+    expect(() => new Rover(plateau, 6, 1, 'S')).toThrow();
   });
 
   it('should return correct position after command execution', () => {
@@ -23,5 +24,13 @@ describe('Tests for the Rover model', () => {
   it('should throw error if invalid command is provided', () => {
     const rover = new Rover(plateau, 0, 0, 'N');
     expect(() => rover.execute('RXM')).toThrow(); 
+  })
+
+  it('should throw error if try to exceed plateau bounds', () => {
+    const rover = new Rover(plateau, 0, 0, 'N');
+    expect(() => rover.execute('LM')).toThrow(); 
+    expect(() => rover.execute('LM')).toThrow(); 
+    expect(() => rover.execute('LMMMMMM')).toThrow(); 
+    expect(() => rover.execute('LMMMMMMMMM')).toThrow(); 
   })
 })

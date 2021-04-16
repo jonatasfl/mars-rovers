@@ -15,6 +15,11 @@ export default class Rover {
   private plateau: Plateau;
 
   constructor(plateau: Plateau, coordX: number, coordY: number, direction: string) {
+    const { topRightX, topRightY } = plateau.getMaxBounds();
+    if (coordX > topRightX || coordY > topRightY) {
+      throw new Error('Out of plateau bounds');
+    }
+
     this.plateau = plateau;
     this.coordX = coordX;
     this.coordY = coordY;
