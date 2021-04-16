@@ -12,5 +12,13 @@ describe('Tests for the Rover model', () => {
   it('should return correct position after command execution', () => {
     const rover = new Rover(0, 0, 'N');
     expect(rover.execute('RM')).toBe('1 0 E');
+    expect(rover.execute('LMM')).toBe('1 2 N');
+    expect(rover.execute('LM')).toBe('0 2 W');
+    expect(rover.execute('LM')).toBe('0 1 S');
   });
+
+  it('should throw error if invalid command is provided', () => {
+    const rover = new Rover(0, 0, 'N');
+    expect(() => rover.execute('RXM')).toThrow(); 
+  })
 })

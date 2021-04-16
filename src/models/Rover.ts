@@ -1,5 +1,5 @@
 import { getNewDirection } from "helpers/misc";
-import { Command, Direction, DirMap } from "interfaces/rover";
+import { Direction, DirMap } from "interfaces/rover";
 import { oneOf, min } from "validators";
 
 export default class Rover {
@@ -55,8 +55,6 @@ export default class Rover {
         if (this.coordX >= 1) {
           this.coordX -= 1;
         }
-        break;
-      default:
         break;
     }
   }
