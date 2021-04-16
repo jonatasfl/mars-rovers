@@ -1,4 +1,4 @@
-import { min } from "validators";
+import { min } from "../validators";
 
 interface MaxBounds {
   topRightX: number;

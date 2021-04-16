@@ -1,4 +1,4 @@
-import { Command, Direction, DirMap } from "interfaces/rover";
+import { Command, Direction, DirMap } from "../interfaces/rover";
 
 export function getNewDirection(currentDir: Direction, cmd: Exclude<Command, 'M'>) {
   const dirMap: DirMap = {

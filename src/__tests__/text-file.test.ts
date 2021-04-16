@@ -1,6 +1,6 @@
 import { resolve } from 'path'
 
-import TextFile from "models/TextFile"
+import TextFile from "../models/TextFile"
 
 describe('Tests for TextFile model', () => {
   it('should be defined with correct file path', () => {

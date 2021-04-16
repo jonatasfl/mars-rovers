@@ -1,6 +1,6 @@
-import { getNewDirection } from "helpers/misc";
-import { Direction, DirMap } from "interfaces/rover";
-import { oneOf, min } from "validators";
+import { getNewDirection } from "../helpers/misc";
+import { Direction, DirMap } from "../interfaces/rover";
+import { oneOf, min } from "../validators";
 
 export default class Rover {
   @min(0)

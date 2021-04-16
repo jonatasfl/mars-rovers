@@ -1,4 +1,4 @@
-import Rover from "models/Rover"
+import Rover from "../models/Rover"
 
 describe('Tests for the Rover model', () => {
   it('should be defined with valid parameters', () => {

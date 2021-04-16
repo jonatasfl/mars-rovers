@@ -1,4 +1,4 @@
-import Plateau from 'models/Plateau';
+import Plateau from '../models/Plateau';
 
 describe('Test Plateau model', () => {
   it('should be defined with valid parameters', () => {
