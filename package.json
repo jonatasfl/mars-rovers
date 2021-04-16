@@ -11,6 +11,7 @@
     "start": "tsc && node dist/app.js",
     "dev": "ts-node src/app.ts",
     "test": "jest",
+    "test:coverage": "jest --coverage=true",
     "test:watch": "jest --watchAll"
   },
   "devDependencies": {

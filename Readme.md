@@ -61,7 +61,7 @@ I've choose Node.js with Typescript to solve this problem because it's a languag
 
 ## Project techs/libs
 
-- **Typescript** - To help with code complete and make it easier for other devs to understand;
+- **Typescript** - To help with code completion and make it easier for other devs to understand;
 - **Node.js** - Because it's a popular "language";
 - **Jest** - The most popular Javascript testing framework;
 - **Eslint** - To standardize and enforce the code style (Airbnb style);
@@ -85,6 +85,12 @@ I've choose Node.js with Typescript to solve this problem because it's a languag
     yarn install
     # or
     npm install
+
+## Testing
+
+    yarn test
+    # or
+    npm run test
 
 ## Execute
 
