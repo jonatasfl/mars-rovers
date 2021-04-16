@@ -8,6 +8,10 @@ export default function min(minValue: number) {
         throw new Error(`Min ${key} should be ${minValue}`);
       }
 
+      if (isNaN(value) || !Number.isInteger(value)) {
+        throw new Error(`${key} should be a integer`);
+      }
+
       val = value;
     }
 
@@ -17,7 +21,5 @@ export default function min(minValue: number) {
       enumerable: true,
       configurable: true
     });
-
-    // console.log('DIR', dir, target, key, target[key]);
   }
 }
